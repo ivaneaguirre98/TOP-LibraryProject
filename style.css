@@ -1,0 +1,14 @@
+.libraryContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.bookCard{
+    text-align: center;
+    border: 2px solid black;
+    padding: 2%;
+    width: 200px;
+}
