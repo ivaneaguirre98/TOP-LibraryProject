@@ -1,7 +1,9 @@
 let myLibrary = [];
 
-let addButt = document.getElementById("addBookButton");
+const addButt = document.getElementById("addBookButton");
+const cancelButt = document.querySelector(".cancelButton");
 addButt.addEventListener("click", addBook);
+cancelButt.addEventListener("click", cancelButton);
 
 function Book(author, title, pageNum, isRead){
     this.author = author,
@@ -19,9 +21,13 @@ function addToArray(bookObj){
 }
 
 function addBook(){
-    console.log("Button Pressed")
+    const bookForm = document.querySelector('.formContainer');
+    bookForm.style.display = "flex";
 }
 
-addToArray(theHobbit);
+function cancelButton(){
+    const bookForm = document.querySelector(".formContainer");
+    bookForm.style.display = "none";
+}
 
-console.log(myLibrary);
+
