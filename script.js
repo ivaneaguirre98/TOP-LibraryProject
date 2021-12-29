@@ -1,9 +1,11 @@
 let myLibrary = [];
 
-const addButt = document.getElementById("addBookButton");
+const formButt = document.getElementById("formButton");
 const cancelButt = document.querySelector(".cancelButton");
-addButt.addEventListener("click", addBook);
+const addButt = document.querySelector(".addBookButton");
+formButt.addEventListener("click", addBookButton);
 cancelButt.addEventListener("click", cancelButton);
+addButt.addEventListener("click", addBook);
 
 function Book(author, title, pageNum, isRead){
     this.author = author,
@@ -20,14 +22,24 @@ function addToArray(bookObj){
     myLibrary.push(bookObj);
 }
 
-function addBook(){
+//shows 'add book' form on screen
+function addBookButton(){
     const bookForm = document.querySelector('.formContainer');
     bookForm.style.display = "flex";
 }
 
+//hides 'add book' form on screen
 function cancelButton(){
     const bookForm = document.querySelector(".formContainer");
     bookForm.style.display = "none";
 }
 
+
+//collect form entry
+function addBook(){
+    let bookName = document.getElementById("bookname").value;
+    let authorName = document.getElementById("author").value;
+    let pageNum = document.getElementById("pageNum").value;
+    console.log(bookName, authorName, pageNum);
+}
 
