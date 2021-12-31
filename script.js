@@ -5,7 +5,7 @@ const cancelButt = document.querySelector(".cancelButton");
 const addButt = document.querySelector(".addBookButton");
 formButt.addEventListener("click", addBookButton);
 cancelButt.addEventListener("click", cancelButton);
-addButt.addEventListener("click", addBook);
+addButt.addEventListener("click", validateForm);
 
 function Book(author, title, pageNum, isRead){
     this.author = author,
@@ -35,11 +35,29 @@ function cancelButton(){
 }
 
 
-//collect form entry
-function addBook(){
+function validateForm(){
     let bookName = document.getElementById("bookname").value;
     let authorName = document.getElementById("author").value;
     let pageNum = document.getElementById("pageNum").value;
-    console.log(bookName, authorName, pageNum);
+    // console.log(bookName);
+
+    if(bookName == "" || authorName ==="" || pageNum === ""){
+        alert("Must fill out all fields.")
+    }
+
+    else{
+        addBook();
+    }
 }
+
+function addBook(){
+    console.log("Booked Added");
+    const bookForm = document.querySelector(".formContainer");
+    bookForm.style.display = "none";
+
+    let newBookCard = document.createElement("div");
+    newBookCard.classList.add("bookCard");
+    document.getElementById("libraryContainer").appendChild(newBookCard);
+}
+
 
