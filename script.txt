@@ -1,0 +1,23 @@
+// function addBook(bookName, authorName, pageNum){
+//     console.log("Booked Added");
+//     const bookForm = document.querySelector(".formContainer");
+//     bookForm.style.display = "none";
+
+//     let newBookCard = document.createElement("div");
+//     newBookCard.classList.add("bookCard");
+//     document.getElementById("libraryContainer").appendChild(newBookCard);
+
+//     let newBookTitle = document.createElement("h4");
+//     newBookTitle.innerHTML = bookName;
+
+//     let newBookAuthor = document.createElement("p");
+//     newBookAuthor.innerHTML = authorName;
+
+//     let newPageNum = document.createElement("p");
+//     newPageNum.innerHTML = pageNum;
+
+//     newBookCard.appendChild(newBookTitle);
+//     newBookCard.appendChild(newBookAuthor);
+//     newBookCard.appendChild(newPageNum);
+
+// }

@@ -14,10 +14,6 @@ function Book(author, title, pageNum, isRead){
     this.isRead = isRead
 }
 
-
-let theHobbit = new Book("John Smith", "The Hobbit", 69, true);
-let harryPotter = new Book("Smith John", "Harry Potter", 100, true);
-
 function addToArray(bookObj){
     myLibrary.push(bookObj);
 }
@@ -46,18 +42,15 @@ function validateForm(){
     }
 
     else{
-        addBook();
+        console.log("Book Added");
+        createBookObject(bookName, authorName, pageNum);
     }
 }
 
-function addBook(){
-    console.log("Booked Added");
-    const bookForm = document.querySelector(".formContainer");
-    bookForm.style.display = "none";
-
-    let newBookCard = document.createElement("div");
-    newBookCard.classList.add("bookCard");
-    document.getElementById("libraryContainer").appendChild(newBookCard);
+function createBookObject(bookName, authorName, pageNum){
+    const newBookObject = new Book(bookName, authorName, pageNum);
+    addToArray(newBookObject);
+    console.log(myLibrary);
 }
 
 
