@@ -78,6 +78,9 @@ function addBook(newBookObject){
         let newPageNum = document.createElement("p");
         newPageNum.innerHTML = myLibrary[i].pageNum;
         newBookCard.appendChild(newPageNum);
+
+        newBookCard.setAttribute("bookPlace", (i+1));
+    
     }
 
 }
