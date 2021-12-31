@@ -1,5 +1,7 @@
+// Array to store my book objects
 let myLibrary = [];
 
+//defining button variables and adding event listeners 
 const formButt = document.getElementById("formButton");
 const cancelButt = document.querySelector(".cancelButton");
 const addButt = document.querySelector(".addBookButton");
@@ -7,15 +9,12 @@ formButt.addEventListener("click", addBookButton);
 cancelButt.addEventListener("click", cancelButton);
 addButt.addEventListener("click", validateForm);
 
-function Book(author, title, pageNum, isRead){
-    this.author = author,
+//book object constructor
+function Book(title, author, pageNum, isRead){
     this.title = title,
+    this.author = author,
     this.pageNum = pageNum,
     this.isRead = isRead
-}
-
-function addToArray(bookObj){
-    myLibrary.push(bookObj);
 }
 
 //shows 'add book' form on screen
@@ -30,7 +29,7 @@ function cancelButton(){
     bookForm.style.display = "none";
 }
 
-
+// validates form to ensure that all fields are filled out
 function validateForm(){
     let bookName = document.getElementById("bookname").value;
     let authorName = document.getElementById("author").value;
@@ -42,15 +41,45 @@ function validateForm(){
     }
 
     else{
-        console.log("Book Added");
         createBookObject(bookName, authorName, pageNum);
     }
 }
 
+// takes user form input and creates book object then adds to array
 function createBookObject(bookName, authorName, pageNum){
     const newBookObject = new Book(bookName, authorName, pageNum);
-    addToArray(newBookObject);
-    console.log(myLibrary);
+    myLibrary.push(newBookObject);
+    // console.log(myLibrary);
+    addBook(newBookObject);
+}
+
+function addBook(newBookObject){
+    console.log("Book added");
+    const bookForm = document.querySelector(".formContainer");
+    bookForm.style.display = "none";
+
+    let bookGrid = document.getElementById("libraryContainer");
+    bookGrid.innerHTML = ""
+
+
+    for(let i = 0; i < myLibrary.length; i++){
+        let newBookCard = document.createElement("div");
+        newBookCard.classList.add("bookCard");
+        bookGrid.appendChild(newBookCard);
+
+        let newBookTitle = document.createElement("h4");
+        newBookTitle.innerHTML = myLibrary[i].title;
+        newBookCard.appendChild(newBookTitle);
+
+        let newBookAuthor = document.createElement("h4");
+        newBookAuthor.innerHTML = myLibrary[i].author;
+        newBookCard.appendChild(newBookAuthor);
+
+        let newPageNum = document.createElement("p");
+        newPageNum.innerHTML = myLibrary[i].pageNum;
+        newBookCard.appendChild(newPageNum);
+    }
+
 }
 
 
