@@ -49,11 +49,11 @@ function validateForm(){
 function createBookObject(bookName, authorName, pageNum){
     const newBookObject = new Book(bookName, authorName, pageNum);
     myLibrary.push(newBookObject);
-    // console.log(myLibrary);
-    addBook(newBookObject);
+    console.log(myLibrary);
+    createBookCard(newBookObject);
 }
 
-function addBook(newBookObject){
+function createBookCard(newBookObject){
     console.log("Book added");
     const bookForm = document.querySelector(".formContainer");
     bookForm.style.display = "none";
@@ -65,6 +65,7 @@ function addBook(newBookObject){
     for(let i = 0; i < myLibrary.length; i++){
         let newBookCard = document.createElement("div");
         newBookCard.classList.add("bookCard");
+        newBookCard.setAttribute('bookPlace', i);
         bookGrid.appendChild(newBookCard);
 
         let newBookTitle = document.createElement("h4");
@@ -79,10 +80,58 @@ function addBook(newBookObject){
         newPageNum.innerHTML = myLibrary[i].pageNum;
         newBookCard.appendChild(newPageNum);
 
-        newBookCard.setAttribute("bookPlace", (i+1));
+        let deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete Book";
+        deleteButton.classList.add("removeBook");
+        newBookCard.appendChild(deleteButton);
+
+        deleteButton.addEventListener("click", function(){
+            removeBook(newBookCard);
+        });
     
     }
 
 }
 
+function removeBook(bookCard){
+    console.log("Deleted");
+    let bookPlace = bookCard.getAttribute("bookplace");
+    myLibrary.splice(bookPlace, 1);
+    console.log(myLibrary);
+    updateGrid();
+}
 
+function updateGrid(){
+    let bookGrid = document.getElementById("libraryContainer");
+    bookGrid.innerHTML = ""
+
+
+    for(let i = 0; i < myLibrary.length; i++){
+        let newBookCard = document.createElement("div");
+        newBookCard.classList.add("bookCard");
+        newBookCard.setAttribute('bookPlace', i);
+        bookGrid.appendChild(newBookCard);
+
+        let newBookTitle = document.createElement("h4");
+        newBookTitle.innerHTML = myLibrary[i].title;
+        newBookCard.appendChild(newBookTitle);
+
+        let newBookAuthor = document.createElement("h4");
+        newBookAuthor.innerHTML = myLibrary[i].author;
+        newBookCard.appendChild(newBookAuthor);
+
+        let newPageNum = document.createElement("p");
+        newPageNum.innerHTML = myLibrary[i].pageNum;
+        newBookCard.appendChild(newPageNum);
+
+        let deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete Book";
+        deleteButton.classList.add("removeBook");
+        newBookCard.appendChild(deleteButton);
+
+        deleteButton.addEventListener("click", function(){
+            removeBook(newBookCard);
+        });
+    
+    }
+}
