@@ -21,6 +21,9 @@ function Book(title, author, pageNum, isRead){
 function addBookButton(){
     const bookForm = document.querySelector('.formContainer');
     bookForm.style.display = "flex";
+    
+    let actualForm = document.getElementById("bookForm");
+    actualForm.reset()
 }
 
 //hides 'add book' form on screen
@@ -64,25 +67,28 @@ function createBookCard(newBookObject){
 
     for(let i = 0; i < myLibrary.length; i++){
         let newBookCard = document.createElement("div");
-        newBookCard.classList.add("bookCard");
+        newBookCard.classList.add("card","text-dark", "bg-light", "mb-3", "text-center");
         newBookCard.setAttribute('bookPlace', i);
+        newBookCard.style.width = "18rem";
         bookGrid.appendChild(newBookCard);
 
         let newBookTitle = document.createElement("h4");
-        newBookTitle.innerHTML = myLibrary[i].title;
+        newBookTitle.innerHTML = "Title: " + myLibrary[i].title;
+        newBookTitle.classList.add("card-title");
         newBookCard.appendChild(newBookTitle);
 
         let newBookAuthor = document.createElement("h4");
-        newBookAuthor.innerHTML = myLibrary[i].author;
+        newBookAuthor.innerHTML = "Author: " + myLibrary[i].author;
+        newBookAuthor.style.fontSize = "medium"
         newBookCard.appendChild(newBookAuthor);
 
         let newPageNum = document.createElement("p");
-        newPageNum.innerHTML = myLibrary[i].pageNum;
+        newPageNum.innerHTML = "Pages: " + myLibrary[i].pageNum;
         newBookCard.appendChild(newPageNum);
 
         let deleteButton = document.createElement("button");
         deleteButton.innerHTML = "Delete Book";
-        deleteButton.classList.add("removeBook");
+        deleteButton.classList.add("removeBook", "btn", "btn-danger");
         newBookCard.appendChild(deleteButton);
 
         deleteButton.addEventListener("click", function(){
@@ -102,36 +108,5 @@ function removeBook(bookCard){
 }
 
 function updateGrid(){
-    let bookGrid = document.getElementById("libraryContainer");
-    bookGrid.innerHTML = ""
-
-
-    for(let i = 0; i < myLibrary.length; i++){
-        let newBookCard = document.createElement("div");
-        newBookCard.classList.add("bookCard");
-        newBookCard.setAttribute('bookPlace', i);
-        bookGrid.appendChild(newBookCard);
-
-        let newBookTitle = document.createElement("h4");
-        newBookTitle.innerHTML = myLibrary[i].title;
-        newBookCard.appendChild(newBookTitle);
-
-        let newBookAuthor = document.createElement("h4");
-        newBookAuthor.innerHTML = myLibrary[i].author;
-        newBookCard.appendChild(newBookAuthor);
-
-        let newPageNum = document.createElement("p");
-        newPageNum.innerHTML = myLibrary[i].pageNum;
-        newBookCard.appendChild(newPageNum);
-
-        let deleteButton = document.createElement("button");
-        deleteButton.innerHTML = "Delete Book";
-        deleteButton.classList.add("removeBook");
-        newBookCard.appendChild(deleteButton);
-
-        deleteButton.addEventListener("click", function(){
-            removeBook(newBookCard);
-        });
-    
-    }
+    createBookCard(); 
 }
