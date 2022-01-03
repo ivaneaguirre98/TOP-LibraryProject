@@ -91,9 +91,18 @@ function createBookCard(newBookObject){
         deleteButton.classList.add("removeBook", "btn", "btn-danger");
         newBookCard.appendChild(deleteButton);
 
+        let readButton = document.createElement("button");
+        readButton.innerHTML = "Read";
+        readButton.classList.add("haveRead", "btn", "btn-success");
+        newBookCard.appendChild(readButton);
+
         deleteButton.addEventListener("click", function(){
             removeBook(newBookCard);
         });
+
+        readButton.addEventListener("click", function(){
+            haveRead(readButton);
+        })
     
     }
 
@@ -109,4 +118,21 @@ function removeBook(bookCard){
 
 function updateGrid(){
     createBookCard(); 
+}
+
+function haveRead(readButton){
+    console.log(readButton);
+    
+    if(readButton.innerHTML === "Read"){
+        readButton.innerHTML = "Not Read";
+        readButton.classList.remove("btn-success");
+        readButton.classList.add("btn-secondary");
+    }
+
+    else{
+        readButton.innerHTML = "Read";
+        readButton.classList.remove("btn-secondary");
+        readButton.classList.add("btn-success");
+    }
+
 }
