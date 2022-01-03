@@ -3,9 +3,10 @@
     padding: 0;
 }
 
-.Header{
+.container-fluid{
     text-align: center;
-    padding-top: 2%;
+    padding: 2% 0 2% 0;
+    background-color: #edf2f4;
 }
 
 .libraryContainer{
@@ -51,4 +52,9 @@
 
 .removeBook{
     margin-bottom: 5%;
+}
+
+.buttonContainer{
+    padding-top: 2%;
+    text-align: center;
 }
