@@ -37,20 +37,20 @@ function validateForm(){
     let bookName = document.getElementById("bookname").value;
     let authorName = document.getElementById("author").value;
     let pageNum = document.getElementById("pageNum").value;
-    // console.log(bookName);
+    let isRead = document.getElementById("isRead").value;
 
-    if(bookName == "" || authorName ==="" || pageNum === ""){
+    if(bookName == "" || authorName ==="" || pageNum === "" || isRead === ""){
         alert("Must fill out all fields.")
     }
 
     else{
-        createBookObject(bookName, authorName, pageNum);
+        createBookObject(bookName, authorName, pageNum, isRead);
     }
 }
 
 // takes user form input and creates book object then adds to array
-function createBookObject(bookName, authorName, pageNum){
-    const newBookObject = new Book(bookName, authorName, pageNum);
+function createBookObject(bookName, authorName, pageNum, isRead){
+    const newBookObject = new Book(bookName, authorName, pageNum, isRead);
     myLibrary.push(newBookObject);
     console.log(myLibrary);
     createBookCard(newBookObject);
@@ -93,7 +93,7 @@ function createBookCard(newBookObject){
 
         let readButton = document.createElement("button");
         readButton.innerHTML = "Read";
-        readButton.classList.add("haveRead", "btn", "btn-success");
+        readButton.classList.add("btn" ,"btn-success");
         newBookCard.appendChild(readButton);
 
         deleteButton.addEventListener("click", function(){
@@ -121,8 +121,7 @@ function updateGrid(){
 }
 
 function haveRead(readButton){
-    console.log(readButton);
-    
+
     if(readButton.innerHTML === "Read"){
         readButton.innerHTML = "Not Read";
         readButton.classList.remove("btn-success");
