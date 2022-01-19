@@ -10,11 +10,13 @@ cancelButt.addEventListener("click", cancelButton);
 addButt.addEventListener("click", validateForm);
 
 //book object constructor
-function Book(title, author, pageNum, isRead){
-    this.title = title,
-    this.author = author,
-    this.pageNum = pageNum,
-    this.isRead = isRead
+class Book{
+    constructor(title, author, pageNum, isRead){
+        this.title = title,
+        this.author = author,
+        this.pageNum = pageNum,
+        this.isRead = isRead
+    }
 }
 
 //shows 'add book' form on screen
